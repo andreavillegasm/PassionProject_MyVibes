@@ -1,0 +1,64 @@
+﻿@model MyVibes.Models.Artist
+
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Update @Model.StagePersona</h2>
+
+<a href="/Artist/List">Back to List</a>
+
+<form method="post" action="/Artist/Update/@Model.ArtistID" enctype="multipart/form-data" class="form-style">
+    <div class="itemimage">
+        @{
+            if (Model.HasPic == 1)
+            {
+                <img src="../../Content/Artists/@(Model.ArtistID).@(Model.PicExtension)" alt="Image of @Model.StagePersona" />
+                <input class="hidden" id="PicExtension" type="text" value="@Model.PicExtension" name="PicExtension"  />
+            <fieldset>
+                <div>
+                    <span>Delete Picture?</span>
+                </div>
+                <span>Yes</span>
+                <input type="radio" value="yes" id="PicDeleteY" name="PicDelete" />
+                <span>No</span>
+                <input type="radio" value="no" id="PicDeleteN" name="PicDelete" checked />
+            </fieldset>
+            }
+        }
+    </div>
+    <div class="input">
+        <span>New/Update Image: </span>
+        <input type="file" name="ArtistPic" id="ArtistPic"/>
+
+    </div>
+    <div class="input">
+        <span>Artistic Name: </span>
+        <input type="text" value="@Model.StagePersona" id="StagePersona" name="StagePersona" />
+    </div>
+    <div class="input">
+        <span>Real Name (Optional): </span>
+        <input id="RealName" type="text" value="@Model.RealName" name="RealName" />
+    </div>
+    <div class="input">
+        <span>Age (If Applicable): </span>
+        <input id="Age" type="text" value="@Model.Age" name="Age" />
+    </div>
+    <div class="input">
+        <span>Start Year: </span>
+        <input id="StartYear" type="text" value="@Model.StartYear" name="StartYear" />
+    </div>
+    <div class="input">
+        <span>Bio (Write a little bit about the artist): </span>
+        <input id="Bio" type="text" value="@Model.Bio" name="Bio" />
+    </div>
+    @{
+        //if there is an image already send the extension
+        if (@Model.HasPic == 1)
+        {
+            
+        }
+    }
+    <a class="navlink" href="/Artist/List">Cancel</a>
+    <button type="submit">Update</button>
+</form>

@@ -1,0 +1,28 @@
+﻿@model MyVibes.Models.Song
+@{
+    ViewBag.Title = "Update";
+}
+    <a href="/Artist/List">Back to List</a>
+
+<h2>Update @Model.SongName</h2>
+<form method="post" action="/Song/Update/@Model.SongID" class="form-style">
+    <div class="input">
+        <span>Name: </span>
+        <input type="text"  value="@Model.SongName"name="SongName" id="SongName" />
+    </div>
+    <div class="input">
+        <span>Duration: </span>
+        <input type="text" value="@Model.Duration" id="Duration" name="Duration" />
+    </div>
+    <div class="input">
+        <span>Genre: </span>
+        <input id="Genre" type="text" value="@Model.Genre" name="Genre" />
+    </div>
+    <div class="input">
+        <span>Release Date: </span>
+        <input id="ReleaseDate" type="datetime" value="@Model.ReleaseDate" name="ReleaseDate" />
+    </div>
+    <a class="navlink" href="/Song/List">Cancel</a>
+    <button type="submit">Update</button>
+</form>
+

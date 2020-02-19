@@ -1,0 +1,70 @@
+﻿@model MyVibes.Models.ViewModels.DetailSong
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2 class="title">@Model.song.SongName Details</h2>
+
+
+<div class="navbar">
+    <a class="back-link" href="/Song/List">Back to List</a>
+
+</div>
+<div class="songs-container">
+
+    <div class="songs-info">
+        <div>Duration: @Model.song.Duration</div>
+        <div>Genre:@Model.song.Genre</div>
+        <div>Release Date: @Model.song.ReleaseDate</div>
+    </div>
+    <div class="songs-info">
+        <div>Artists in this song:</div>
+        @{
+
+            foreach (var artist in @Model.artists)
+            {
+                <div class="artist-info">
+                    <a href="/Artist/Detail/@artist.ArtistID">@artist.StagePersona</a>
+                    <div class="itemimage">
+                        @{
+                            if (artist.HasPic == 1)
+                            {
+                                <img src="../../Content/Artists/@(artist.ArtistID).@(artist.PicExtension)" alt="Image of @artist.StagePersona" />
+                            }
+                        }
+                    </div>
+                    @{
+                        //Rare instance of a double GET parameter
+                        //we are passing a link which contains the ownerID and petID
+                    }
+                    <a href="/Song/DetachArtist/@Model.song.SongID?ArtistID=@artist.ArtistID">
+                        Remove Artist
+                    </a>
+                </div>
+            }
+
+        }
+        <form method="post" action="/Song/AttachArtist/@Model.song.SongID">
+            <select name="ArtistID" id="ArtistID">
+                @{
+                   // Shows if they want to add an Artist to a song
+
+                    foreach (var artist in Model.all_artists)
+                    {
+                        <option value="@artist.ArtistID">
+                            @artist.StagePersona
+                        </option>
+                    }
+                }
+            </select>
+            <input type="submit" value="Add Artist" />
+        </form>
+
+    </div>
+    <div>
+        <a class="navlink" href="/Song/Update/@Model.song.SongID">Update</a>
+        <a class="navlink" href="/song/DeleteConfirm/@Model.song.SongID">Delete</a>
+    </div>
+</div>
+

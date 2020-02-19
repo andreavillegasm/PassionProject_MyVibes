@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "New";
+}
+
+    <div class="navbar">
+        <a class="back-link" href="/Playlist/List">Back to my Playlists</a>
+    </div>
+<h2 class="title">New Playlist</h2>
+
+<form method="POST" action="/Playlist/Add" class="form-style">
+    <div>
+        <span>Playlist Name:</span>
+        <input id="PlaylistName" type="text" name="PlaylistName" />
+    </div>
+    <a class="navlink" href="/Playlist/List">Cancel</a>
+    <button type="submit">Add Playlist</button>
+
+
+</form>
+

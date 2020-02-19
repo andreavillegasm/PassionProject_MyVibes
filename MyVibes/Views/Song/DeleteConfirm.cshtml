@@ -1,0 +1,18 @@
+﻿@model MyVibes.Models.Song
+
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+
+<h2>Are you sure you want to delete the song @Model.SongName?</h2>
+
+<div class="navbar">
+    <a href="/Song/Detail/@Model.SongID">Cancel</a>
+</div>
+<form method="POST" action="/Song/Delete/@Model.SongID">
+    <div class="input">
+        <input type="submit" value="Confirm" />
+    </div>
+</form>
+

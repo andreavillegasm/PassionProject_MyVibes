@@ -1,0 +1,53 @@
+﻿@model MyVibes.Models.Artist
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2>About @Model.StagePersona</h2>
+
+
+<div class="navbar">
+    <a class="navlink" href="/Artist/List">Back to List</a>
+    
+</div>
+<div class="artist-container">
+
+    <div class="artist-info">
+        <div class="itemimage">
+            @{
+                if (Model.HasPic == 1)
+                {
+                    <img src="../../Content/Artists/@(Model.ArtistID).@(Model.PicExtension)" alt="Image of @Model.StagePersona" />
+                }
+            }
+        </div>
+        <div>Full Name: @Model.RealName</div>
+        @{
+            //Since the default for Age is -1 if an age was inputed it can be displayed otherwise its ignored
+            //Age is the only oen we ignored because it is not applicable to every artist (i.e. A band does not display age)
+            if (@Model.Age > 0)
+            {
+                <div>Age: @Model.Age</div>
+
+            }
+
+        }
+
+        <div>Active Since:@Model.StartYear</div>
+        <div>
+            Bio:
+            <div class="Bio">
+                @Model.Bio
+            </div>
+        </div>
+        <div>
+            <a class="navlink" href="/Artist/Update/@Model.ArtistID">Update</a>
+            <a class="navlink" href="/Artist/DeleteConfirm/@Model.ArtistID">Delete</a>
+        </div>
+
+    </div>
+    <!-- TO DO: Songs that the Artist has-->
+    <div class="songs-container">
+    </div>
+</div>

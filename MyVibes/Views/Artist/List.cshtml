@@ -1,0 +1,34 @@
+﻿@model List<MyVibes.Models.Artist>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2 class="title">My Artists</h2>
+
+
+<div class="artist-list-container">
+    @{
+        foreach (var Artist in Model)
+        {
+        <div class="artist-info">
+            <div class="artist-name"><a href="Detail/@Artist.ArtistID">@Artist.StagePersona</a></div>
+            <div class="itemimage">
+                @{
+                    if (Artist.HasPic == 1)
+                    {
+                        <img src="../../Content/Artists/@(Artist.ArtistID).@(Artist.PicExtension)" alt="Image of @Artist.StagePersona" />
+                    }
+                }
+            </div>
+            <div class="itemdetails">
+
+                <div><a href="Update/@Artist.ArtistID">edit </a><a href="DeleteConfirm/@Artist.ArtistID"> delete</a></div>
+            </div>
+        </div>
+        }
+    }
+</div>
+<div>
+    <a href="/Artist/New" class="button">Add Artist</a>
+</div>

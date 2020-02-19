@@ -1,0 +1,25 @@
+﻿@model List<MyVibes.Models.Playlist>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2 class="title">My Playlists</h2>
+
+
+<div class="playlist-list-container">
+    @{
+        foreach (var Playlist in Model)
+        {
+            <div class="playlist-info">
+                <div class="playlist-name"><a href="Detail/@Playlist.PlaylistID">@Playlist.PlaylistName</a></div>
+                <div class="itemdetails">
+                    <div><a href="Update/@Playlist.PlaylistID">edit </a><a href="DeleteConfirm/@Playlist.PlaylistID"> delete</a></div>
+                </div>
+            </div>
+        }
+    }
+</div>
+<div>
+    <a href="/Playlist/New" class="button">Add Playlist</a>
+</div>
+

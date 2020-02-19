@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "New";
+}
+
+<h2 class="title">Add a new Artist</h2>
+<div class="navbar">
+    <a class="back-link" href="/Artist/List">Back to my Artists</a>
+</div>
+<form method="POST" action="/Artist/Add" class="form-style">
+    <div>
+        <span>Artisitic Name:</span>
+        <input id="StagePersona" type="text" name="StagePersona" />
+    </div>
+    <div>
+        <span>Real Name (Optional): </span>
+        <input id="RealName" type="text" name="RealName" />
+    </div>
+    <div>
+        <span>Age (If Applicable): </span>
+        <input id="Age" type="text" name="Age" />
+    </div>
+    <div>
+        <span>Start Year: </span>
+        <input id="StartYear" type="text" name="StartYear" />
+    </div>
+    <div>
+        <span>Bio (Write a little bit about the artist): </span>
+        <input id="Bio" type="text" name="Bio" />
+    </div>
+    <a class="navlink" href="/Artist/List">Cancel</a>
+    <button type="submit">Add Artist</button>
+
+
+</form>
+

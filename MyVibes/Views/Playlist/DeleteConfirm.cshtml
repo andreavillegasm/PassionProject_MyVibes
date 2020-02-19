@@ -1,0 +1,16 @@
+﻿@model MyVibes.Models.Playlist
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<h2>Are you sure you want to delete the playlist @Model.PlaylistName?</h2>
+
+<div class="navbar">
+    <a href="/Playlist/Detail/@Model.PlaylistID">Cancel</a>
+</div>
+<form method="POST" action="/Playlist/Delete/@Model.PlaylistID">
+    <div class="input">
+        <input type="submit" value="Confirm" />
+    </div>
+</form>
+

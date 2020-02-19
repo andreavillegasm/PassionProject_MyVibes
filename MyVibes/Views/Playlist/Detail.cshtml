@@ -1,0 +1,61 @@
+﻿@model MyVibes.Models.ViewModels.DetailPlaylist
+@{
+    ViewBag.Title = "Detail";
+}
+
+    <div class="navbar">
+        <a class="back-link" href="/Playlist/List">Back to My Playlists</a>
+
+    </div>
+
+<h2 class="title">@Model.playlist.PlaylistName</h2>
+
+<div class="playlist-container">
+
+    <div class="playlist-info">
+        <div>Duration: </div>
+        <div>Created By: </div> <!--future implementation of users-->
+    </div>
+    <div>
+        <a class="navlink" href="/Playlist/Update/@Model.playlist.PlaylistID">Update</a>
+        <a class="navlink" href="/Playlist/DeleteConfirm/@Model.playlist.PlaylistID">Delete</a>
+    </div>
+    <!--Showing the songs in this playlist-->
+    <div class="playlist-info">
+        @{
+
+            foreach (var song in @Model.songs)
+            {
+                <div class="song-info">
+                    <a href="/Song/Detail/@song.SongID">@song.SongName</a>
+                    @{
+                        //Rare instance of a double GET parameter
+                        //we are passing a link which contains the ownerID and petID
+                    }
+                    <a href="/Playlist/DetachSong/@Model.playlist.PlaylistID?SongID=@song.SongID">
+                        Remove song
+                    </a>
+                </div>
+            }
+
+        }
+        <!-- Adding songs to the playlist-->
+        <form method="post" action="/Playlist/AttachSong/@Model.playlist.PlaylistID">
+            <select name="SongID" id="SongID">
+                @{
+                    // Shows if they want to add a song to a playlist
+
+                    foreach (var song in Model.all_songs)
+                    {
+                        <option value="@song.SongID">
+                            @song.SongName
+                        </option>
+                    }
+                }
+            </select>
+            <input type="submit" value="Add Song" />
+        </form>
+
+    </div>
+</div>
+
