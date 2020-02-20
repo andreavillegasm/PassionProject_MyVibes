@@ -91,14 +91,25 @@ namespace MyVibes.Controllers
             Debug.WriteLine(all_artists_query);
             List<Artist> AllArtists = db.Artists.SqlQuery(all_artists_query).ToList();
 
+            //find data about all the playlists link to this song
+            string playlist_aside_query = "select * from Playlists inner join SongPlaylists on Playlists.PlaylistID = SongPlaylists.Playlist_PlaylistID where SongPlaylists.Song_SongID=@id";
+            Debug.WriteLine(playlist_aside_query);
+
+            //List of all the playlists linked to this song
+            var playlist_fk_parameter = new SqlParameter("@id", id);
+            List<Playlist> PlaylistsLinked = db.Playlists.SqlQuery(playlist_aside_query, playlist_fk_parameter).ToList();
+
+
             //ViewModel does 3 things
             //(1) showing the classic information about a song
             //(2) showing all the artists in that song
             //(3) showing all the artists to add a new artist to the song
+            //(4) show all the playlist this song is on
             DetailSong viewmodel = new DetailSong();
             viewmodel.song = song;
             viewmodel.artists = ArtistCredited;
             viewmodel.all_artists = AllArtists;
+            viewmodel.playlits = PlaylistsLinked;
 
             return View(viewmodel);
         }

@@ -88,11 +88,8 @@ textarea {
     width: 30%;
 }
 /*STYLING FOR SONG PAGE*/
-.song-info{
-    background-color:ghostwhite;
-    width:100%;
-    margin: 1em;
-    padding: 2em;
+about-info.about-song{
+    text-align:center;
 }
 .song-name{
     color:purple;

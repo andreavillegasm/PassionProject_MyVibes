@@ -8,7 +8,7 @@
 <form method="post" action="/Song/Update/@Model.SongID" class="form-style">
     <div class="input">
         <span>Name: </span>
-        <input type="text"  value="@Model.SongName"name="SongName" id="SongName" />
+        <input type="text" value="@Model.SongName" name="SongName" id="SongName" />
     </div>
     <div class="input">
         <span>Duration: </span>
@@ -22,7 +22,10 @@
         <span>Release Date: </span>
         <input id="ReleaseDate" type="datetime" value="@Model.ReleaseDate" name="ReleaseDate" />
     </div>
-    <a class="navlink" href="/Song/List">Cancel</a>
-    <button type="submit">Update</button>
+
+    <button type="submit" class="button">Update</button>
+    <div>
+        <a class="navlink" href="/Song/List">Cancel</a>
+    </div>
 </form>
 

@@ -15,5 +15,8 @@ namespace MyVibes.Models.ViewModels
 
         //List of all artists on the database so thay can add an artist to the song if they wish to
         public List<Artist> all_artists { get; set; }
+
+        //All the playlist this song appears on
+        public List<Playlist> playlits { get; set; }
     }
 }

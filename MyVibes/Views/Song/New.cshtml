@@ -2,11 +2,11 @@
 @{
     ViewBag.Title = "New";
 }
-
+    <div class="navbar">
+        <a class="back-link" href="/Song/List">Back to my Songs</a>
+    </div>
 <h2 class="title">Add a Song</h2>
-<div class="navbar">
-    <a class="back-link" href="/Song/List">Back to my Songs</a>
-</div>
+
 <form method="POST" action="/Song/Add" class="form-style">
     <div>
         <span>Name:</span>
@@ -25,8 +25,10 @@
         <span>Release Date: </span>
         <input id="ReleaseDate" type="date" name="ReleaseDate" />
     </div>
-    <a class="navlink" href="/Song/List">Cancel</a>
-    <button type="submit">Add Song</button>
 
+    <button type="submit" class="button">Add Song</button>
+    <div>
+        <a class="navlink" href="/Song/List">Cancel</a>
+    </div>
 
 </form>
