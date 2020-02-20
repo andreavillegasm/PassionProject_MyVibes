@@ -209,6 +209,23 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Wireframes\1.jpg" />
+    <Content Include="Wireframes\10.jpg" />
+    <Content Include="Wireframes\11.jpg" />
+    <Content Include="Wireframes\12.jpg" />
+    <Content Include="Wireframes\13.jpg" />
+    <Content Include="Wireframes\14.jpg" />
+    <Content Include="Wireframes\15.jpg" />
+    <Content Include="Wireframes\16.jpg" />
+    <Content Include="Wireframes\17.jpg" />
+    <Content Include="Wireframes\2.jpg" />
+    <Content Include="Wireframes\3.jpg" />
+    <Content Include="Wireframes\4.jpg" />
+    <Content Include="Wireframes\5.jpg" />
+    <Content Include="Wireframes\6.jpg" />
+    <Content Include="Wireframes\7.jpg" />
+    <Content Include="Wireframes\8.jpg" />
+    <Content Include="Wireframes\9.jpg" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -253,7 +270,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Artists\" />
-    <Folder Include="Wireframes\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
