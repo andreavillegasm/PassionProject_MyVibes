@@ -3,10 +3,12 @@
 @{
     ViewBag.Title = "Update";
 }
+    <div class="back-link">
+        <a href="/Artist/List">Back to My Artists</a>
+    </div>
+<h2 class="title" >Update @Model.StagePersona</h2>
 
-<h2>Update @Model.StagePersona</h2>
 
-<a href="/Artist/List">Back to List</a>
 
 <form method="post" action="/Artist/Update/@Model.ArtistID" enctype="multipart/form-data" class="form-style">
     <div class="itemimage">
@@ -14,22 +16,22 @@
             if (Model.HasPic == 1)
             {
                 <img src="../../Content/Artists/@(Model.ArtistID).@(Model.PicExtension)" alt="Image of @Model.StagePersona" />
-                <input class="hidden" id="PicExtension" type="text" value="@Model.PicExtension" name="PicExtension"  />
-            <fieldset>
-                <div>
-                    <span>Delete Picture?</span>
-                </div>
-                <span>Yes</span>
-                <input type="radio" value="yes" id="PicDeleteY" name="PicDelete" />
-                <span>No</span>
-                <input type="radio" value="no" id="PicDeleteN" name="PicDelete" checked />
-            </fieldset>
+                <input class="hidden" id="PicExtension" type="text" value="@Model.PicExtension" name="PicExtension" />
+                <fieldset>
+                    <div>
+                        <span>Delete Picture?</span>
+                    </div>
+                    <span>Yes</span>
+                    <input type="radio" value="yes" id="PicDeleteY" name="PicDelete" />
+                    <span>No</span>
+                    <input type="radio" value="no" id="PicDeleteN" name="PicDelete" checked />
+                </fieldset>
             }
         }
     </div>
     <div class="input">
         <span>New/Update Image: </span>
-        <input type="file" name="ArtistPic" id="ArtistPic"/>
+        <input type="file" name="ArtistPic" id="ArtistPic" />
 
     </div>
     <div class="input">
@@ -56,9 +58,10 @@
         //if there is an image already send the extension
         if (@Model.HasPic == 1)
         {
-            
+
         }
     }
+
+    <button class="button" type="submit">Update</button>
     <a class="navlink" href="/Artist/List">Cancel</a>
-    <button type="submit">Update</button>
 </form>

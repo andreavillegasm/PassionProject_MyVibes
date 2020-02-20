@@ -8,54 +8,56 @@
 
     </div>
 
-<h2 class="title">@Model.playlist.PlaylistName</h2>
+    <div class="playlist-container">
+        <h2 class="title">@Model.playlist.PlaylistName</h2>
 
-<div class="playlist-container">
+        <div class="playlist-individual-info">
+            <div>Created By:AndreaV01x</div> <!--future implementation of users table-->
+            <div>Duration: </div><!-- Future implementation of total duration by adding the duration of the songs-->
 
-    <div class="playlist-info">
-        <div>Duration: </div>
-        <div>Created By: </div> <!--future implementation of users-->
     </div>
-    <div>
-        <a class="navlink" href="/Playlist/Update/@Model.playlist.PlaylistID">Update</a>
-        <a class="navlink" href="/Playlist/DeleteConfirm/@Model.playlist.PlaylistID">Delete</a>
-    </div>
-    <!--Showing the songs in this playlist-->
-    <div class="playlist-info">
-        @{
+        <div class="playlist-individual-info">
+            <a class="crud-link" href="/Playlist/Update/@Model.playlist.PlaylistID">Update</a>
+            <a class="crud-link" href="/Playlist/DeleteConfirm/@Model.playlist.PlaylistID">Delete</a>
+        </div>
+        <!--Showing the songs in this playlist-->
+        <div class="playlist-individual-info">
+            @{
 
-            foreach (var song in @Model.songs)
-            {
-                <div class="song-info">
-                    <a href="/Song/Detail/@song.SongID">@song.SongName</a>
-                    @{
-                        //Rare instance of a double GET parameter
-                        //we are passing a link which contains the ownerID and petID
-                    }
-                    <a href="/Playlist/DetachSong/@Model.playlist.PlaylistID?SongID=@song.SongID">
-                        Remove song
-                    </a>
-                </div>
-            }
-
-        }
-        <!-- Adding songs to the playlist-->
-        <form method="post" action="/Playlist/AttachSong/@Model.playlist.PlaylistID">
-            <select name="SongID" id="SongID">
-                @{
-                    // Shows if they want to add a song to a playlist
-
-                    foreach (var song in Model.all_songs)
-                    {
-                        <option value="@song.SongID">
-                            @song.SongName
-                        </option>
-                    }
+                foreach (var song in @Model.songs)
+                {
+                    <div class="song-info" id="playlist-song">
+                        <div class="song-name-container"><a class="song-name" href="/Song/Detail/@song.SongID">@song.SongName</a></div>
+                        @{
+                            //Rare instance of a double GET parameter
+                            //we are passing a link which contains the ownerID and petID
+                        }
+                    <div class="crud">
+                        <a  class="crud-link" href="/Playlist/DetachSong/@Model.playlist.PlaylistID?SongID=@song.SongID">
+                            Remove song
+                        </a>
+                    </div>
+                    </div>
                 }
-            </select>
-            <input type="submit" value="Add Song" />
-        </form>
 
+            }
+            <!-- Adding songs to the playlist-->
+            <form method="post" action="/Playlist/AttachSong/@Model.playlist.PlaylistID">
+                <select name="SongID" id="SongID">
+                    @{
+                        // Shows if they want to add a song to a playlist
+
+                        foreach (var song in Model.all_songs)
+                        {
+                            <option value="@song.SongID">
+                                @song.SongName
+                            </option>
+                        }
+                    }
+                </select>
+                <input type="submit" value="Add Song" />
+            </form>
+
+        </div>
     </div>
-</div>
 

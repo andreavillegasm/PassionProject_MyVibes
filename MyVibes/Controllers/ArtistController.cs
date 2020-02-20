@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.Mvc;
 using MyVibes.Data;
 using MyVibes.Models;
+using MyVibes.Models.ViewModels;
 using System.Diagnostics;
 using System.IO;
 
@@ -42,10 +43,20 @@ namespace MyVibes.Controllers
             {
                 return HttpNotFound();
             }
+            //find data about all songs the artist has
+            string aside_query = "select * from Songs inner join ArtistSongs on Songs.SongID = ArtistSongs.Song_SongID where ArtistSongs.Artist_ArtistID=@id";
+            Debug.WriteLine(aside_query);
 
+            //List of all the songs
+            var fk_parameter = new SqlParameter("@id", id);
+            List<Song> songsbyartist = db.Songs.SqlQuery(aside_query, fk_parameter).ToList();
 
+            DetailArtist viewmodel = new DetailArtist();
+            viewmodel.artist = Artist;
+            viewmodel.songs = songsbyartist;
 
-            return View(Artist);
+            return View(viewmodel);
+
         }
 
         //ADD AN ARTIST

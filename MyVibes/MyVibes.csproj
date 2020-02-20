@@ -185,6 +185,7 @@
       <DependentUpon>202002182240234_total.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ViewModels\DetailArtist.cs" />
     <Compile Include="Models\ViewModels\DetailPlaylist.cs" />
     <Compile Include="Models\ViewModels\DetailSong.cs" />
     <Compile Include="Scripts\202002132024190_Artist.cs" />
@@ -201,6 +202,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="ER Diagram\ERDMyVibes.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -251,6 +253,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Artists\" />
+    <Folder Include="Wireframes\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

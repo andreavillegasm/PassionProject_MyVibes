@@ -4,6 +4,9 @@
 }
 
 <h2 class="title">My Playlists</h2>
+<div>
+    <a href="/Playlist/New" class="button">New Playlist</a>
+</div>
 
 
 <div class="playlist-list-container">
@@ -13,13 +16,10 @@
             <div class="playlist-info">
                 <div class="playlist-name"><a href="Detail/@Playlist.PlaylistID">@Playlist.PlaylistName</a></div>
                 <div class="itemdetails">
-                    <div><a href="Update/@Playlist.PlaylistID">edit </a><a href="DeleteConfirm/@Playlist.PlaylistID"> delete</a></div>
+                    <div><a  class="crud-link" href="Update/@Playlist.PlaylistID">Edit </a><a class="crud-link" href="DeleteConfirm/@Playlist.PlaylistID"> Delete</a></div>
                 </div>
             </div>
         }
     }
-</div>
-<div>
-    <a href="/Playlist/New" class="button">Add Playlist</a>
 </div>
 

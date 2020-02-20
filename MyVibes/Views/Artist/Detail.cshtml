@@ -1,53 +1,68 @@
-﻿@model MyVibes.Models.Artist
+﻿@model MyVibes.Models.ViewModels.DetailArtist
 
 @{
     ViewBag.Title = "Detail";
 }
 
-<h2>About @Model.StagePersona</h2>
 
 
-<div class="navbar">
-    <a class="navlink" href="/Artist/List">Back to List</a>
-    
+
+<div class="back-link">
+    <a href="/Artist/List">Back to My Artists</a>   
+</div>
+<h2 class="title">About @Model.artist.StagePersona</h2>
+<div class="crud-update">
+    <a  class="crud-link" href="/Artist/Update/@Model.artist.ArtistID">Update</a>
+    <a  class="crud-link" href="/Artist/DeleteConfirm/@Model.artist.ArtistID">Delete</a>
 </div>
 <div class="artist-container">
 
     <div class="artist-info">
         <div class="itemimage">
             @{
-                if (Model.HasPic == 1)
+                if (Model.artist.HasPic == 1)
                 {
-                    <img src="../../Content/Artists/@(Model.ArtistID).@(Model.PicExtension)" alt="Image of @Model.StagePersona" />
+                    <img src="../../Content/Artists/@(Model.artist.ArtistID).@(Model.artist.PicExtension)" alt="Image of @Model.artist.StagePersona" />
                 }
             }
         </div>
-        <div>Full Name: @Model.RealName</div>
+        <div>Full Name: @Model.artist.RealName</div>
         @{
             //Since the default for Age is -1 if an age was inputed it can be displayed otherwise its ignored
             //Age is the only oen we ignored because it is not applicable to every artist (i.e. A band does not display age)
-            if (@Model.Age > 0)
+            if (@Model.artist.Age > 0)
             {
-                <div>Age: @Model.Age</div>
+                <div>Age: @Model.artist.Age</div>
 
             }
 
         }
 
-        <div>Active Since:@Model.StartYear</div>
+        <div>Active Since:@Model.artist.StartYear</div>
         <div>
             Bio:
             <div class="Bio">
-                @Model.Bio
+                @Model.artist.Bio
             </div>
-        </div>
-        <div>
-            <a class="navlink" href="/Artist/Update/@Model.ArtistID">Update</a>
-            <a class="navlink" href="/Artist/DeleteConfirm/@Model.ArtistID">Delete</a>
         </div>
 
     </div>
     <!-- TO DO: Songs that the Artist has-->
-    <div class="songs-container">
+    <div class="songs-artist-info">
+        <div>Songs by the Artist:</div>
+        @{
+
+            foreach (var song in @Model.songs)
+            {
+                <div class="song-info">
+                    <a href="/Song/Detail/@song.SongID">@song.SongName</a>
+                    @{
+                        //Rare instance of a double GET parameter
+                        //we are passing a link which contains the ownerID and petID
+                    }
+                </div>
+            }
+
+        }
     </div>
 </div>

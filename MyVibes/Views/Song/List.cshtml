@@ -5,22 +5,24 @@
 }
 
 <h2 class="title">My Songs</h2>
-
+<div>
+    <a href="/Song/New" class="button">New Song</a>
+</div>
 
 <div class="song-list-container">
     @{
         foreach (var Song in Model)
         {
             <div class="song-info">
-                <div class="song-name"><a href="Detail/@Song.SongID">@Song.SongName</a></div>
-                <div class="itemdetails">
-
-                    <div><a href="Update/@Song.SongID">edit </a><a href="DeleteConfirm/@Song.SongID"> delete</a></div>
-                </div>
+                    <div>
+                        <a class="song-name" href="Detail/@Song.SongID">@Song.SongName</a>
+                    </div>
+                    <div class="crud">
+                        <a class="crud-link" href="Update/@Song.SongID">edit </a>
+                        <a class="crud-link" href="DeleteConfirm/@Song.SongID"> delete</a>
+                    </div>
             </div>
         }
     }
 </div>
-<div>
-    <a href="/Song/New" class="button">Add Song</a>
-</div>
+

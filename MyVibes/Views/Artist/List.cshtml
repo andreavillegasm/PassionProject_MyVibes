@@ -5,6 +5,9 @@
 }
 
 <h2 class="title">My Artists</h2>
+<div>
+    <a href="/Artist/New" class="button">Add Artist</a>
+</div>
 
 
 <div class="artist-list-container">
@@ -23,12 +26,10 @@
             </div>
             <div class="itemdetails">
 
-                <div><a href="Update/@Artist.ArtistID">edit </a><a href="DeleteConfirm/@Artist.ArtistID"> delete</a></div>
+                <div><a class="crud-link" href="Update/@Artist.ArtistID">Edit </a><a class="crud-link" href="DeleteConfirm/@Artist.ArtistID"> Delete</a></div>
             </div>
         </div>
         }
     }
 </div>
-<div>
-    <a href="/Artist/New" class="button">Add Artist</a>
-</div>
+
