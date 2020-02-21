@@ -18,6 +18,7 @@ namespace MyVibes.Controllers
 {
     public class ArtistController : Controller
     {
+        //THIS CODE REFERENCES THE PETGROOMING PROJECT BUILT BY CHRISTINE IN CLASS 
         // Instance of the database send
         private MyVibesContext db = new MyVibesContext();
 
