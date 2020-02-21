@@ -21,7 +21,7 @@ namespace MyVibes.Controllers
         // Instance of the database send
         private MyVibesContext db = new MyVibesContext();
 
-        // GET: ArtistC:\Users\Andrea\Desktop\PassionProjectVer3\MyVibes\MyVibes\Controllers\PlaylistController.cs
+        // GET:
         public ActionResult List()
         {
             string query = "Select * from Artists ";
@@ -101,7 +101,7 @@ namespace MyVibes.Controllers
         }
 
         //UPDATE 
-        //Update contorller that pull information for the page
+        //Update contorller that pulls information for the page
         public ActionResult Update(int id)
         {
             string query = "select * from artists where artistid = @id";

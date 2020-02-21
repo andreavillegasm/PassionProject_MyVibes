@@ -91,6 +91,11 @@ textarea {
 about-info.about-song{
     text-align:center;
 }
+.song-info{
+    padding:1em; 
+    background-color:ghostwhite;
+    margin:1em;
+}
 .song-name{
     color:purple;
 }
@@ -112,8 +117,8 @@ about-info.about-song{
 }
 .playlist-info {
     text-align: center;
-    margin:2em;
-    padding:2em;
+    margin:1em;
+    padding:1em;
 }
 .playlist-individual-info{
     text-align:center; 

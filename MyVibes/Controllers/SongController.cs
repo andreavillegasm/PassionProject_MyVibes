@@ -21,7 +21,7 @@ namespace MyVibes.Controllers
         // Instance of the database send
         private MyVibesContext db = new MyVibesContext();
 
-        // GET: ArtistC:\Users\Andrea\Desktop\PassionProjectVer3\MyVibes\MyVibes\Controllers\PlaylistController.cs
+        // GET:
         public ActionResult List()
         {
             string query = "Select * from Songs  ";
@@ -70,7 +70,7 @@ namespace MyVibes.Controllers
         //GETTING THE DETAILS OF A SONG
         public ActionResult Detail(int id)
         {
-            //find data about a particular song
+            //Find data about a particular song
             string main_query = "select * from Songs where SongID = @id";
 
             //Check if the query looks like it is supposed to
@@ -78,7 +78,7 @@ namespace MyVibes.Controllers
             var pk_parameter = new SqlParameter("@id", id);
             Song song = db.Songs.SqlQuery(main_query, pk_parameter).FirstOrDefault();
 
-            //find data about all the artists this song has
+            //Find data about all the artists this song has
             string aside_query = "select * from Artists inner join ArtistSongs on Artists.ArtistID = ArtistSongs.Artist_ArtistID where ArtistSongs.Song_SongID=@id";
             Debug.WriteLine(aside_query);
 
@@ -91,7 +91,7 @@ namespace MyVibes.Controllers
             Debug.WriteLine(all_artists_query);
             List<Artist> AllArtists = db.Artists.SqlQuery(all_artists_query).ToList();
 
-            //find data about all the playlists link to this song
+            //Find data about all the playlists link to this song
             string playlist_aside_query = "select * from Playlists inner join SongPlaylists on Playlists.PlaylistID = SongPlaylists.Playlist_PlaylistID where SongPlaylists.Song_SongID=@id";
             Debug.WriteLine(playlist_aside_query);
 
@@ -100,7 +100,7 @@ namespace MyVibes.Controllers
             List<Playlist> PlaylistsLinked = db.Playlists.SqlQuery(playlist_aside_query, playlist_fk_parameter).ToList();
 
 
-            //ViewModel does 3 things
+            //ViewModel does 4 things
             //(1) showing the classic information about a song
             //(2) showing all the artists in that song
             //(3) showing all the artists to add a new artist to the song
@@ -114,7 +114,7 @@ namespace MyVibes.Controllers
             return View(viewmodel);
         }
 
-        //Gets called from the Detail page to attach an Artist to attach/ add an artist to a song
+        //Gets called from the Detail page to attach an Artist to attach/add an artist to a song
         [HttpPost]
         public ActionResult AttachArtist(int id, int ArtistID)
         {
@@ -129,7 +129,7 @@ namespace MyVibes.Controllers
             check_params[0] = new SqlParameter("@id", id);
             check_params[1] = new SqlParameter("@ArtistID", ArtistID);
             List<Artist> artists = db.Artists.SqlQuery(check_query, check_params).ToList();
-            //only execute add if the artist and song referecne do not exist
+            //only execute add if the artist and song reference do not exist
             if (artists.Count <= 0)
             {
 
@@ -149,7 +149,7 @@ namespace MyVibes.Controllers
 
         }
 
-        //URL: /Owner/DetachPet/id?PetID=pid
+        //Gets the reference of the song id and the artist id to erase that reference and therefore detach the artist from the song
         [HttpGet]
         public ActionResult DetachArtist(int id, int ArtistID)
         {
@@ -164,6 +164,7 @@ namespace MyVibes.Controllers
 
             db.Database.ExecuteSqlCommand(query, sqlparams);
 
+            //Redirects to the detail page
             return RedirectToAction("Detail/" + id);
         }
 

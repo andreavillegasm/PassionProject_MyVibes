@@ -2,9 +2,11 @@
 @{
     ViewBag.Title = "Update";
 }
-    <a href="/Artist/List">Back to List</a>
+    <div class="back-link">
+        <a href="/Artist/List">Back to My Songs</a>
+    </div>
 
-<h2>Update @Model.SongName</h2>
+<h2 class="title" >Update @Model.SongName</h2>
 <form method="post" action="/Song/Update/@Model.SongID" class="form-style">
     <div class="input">
         <span>Name: </span>

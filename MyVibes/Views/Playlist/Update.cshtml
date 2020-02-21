@@ -2,16 +2,21 @@
 @{
     ViewBag.Title = "Update";
 }
+    <div class="back-link">
+        <a href="/Playlist/List">Back to My Playlists</a>
+    </div>
 
-<a href="/Playlist/List">Back to My Playlists</a>
 
-<h2>Update Playlist</h2>
+<h2 class="title">Update Playlist</h2>
 <form method="post" action="/Playlist/Update/@Model.PlaylistID" class="form-style">
     <div class="input">
         <span>Playlist Name: </span>
         <input type="text" value="@Model.PlaylistName" name="PlaylistName" id="PlaylistName" />
     </div>
-    <a class="navlink" href="/Playlist/List">Cancel</a>
-    <button type="submit">Update</button>
+
+    <button type="submit" class="button">Update</button>
+    <div>
+        <a class="navlink" href="/Playlist/List">Cancel</a>
+    </div>
 </form>
 

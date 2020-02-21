@@ -9,18 +9,19 @@
     </div>
 <h2 class="title">@Model.song.SongName</h2>
 
-<div class="crud-update">
-    <a class="crud-link" href="/Song/Update/@Model.song.SongID">Update</a>
-    <a class="crud-link" href="/song/DeleteConfirm/@Model.song.SongID">Delete</a>
-</div>
+
 
 
 <div class="songs-container">
 
     <div class="about-info">
         <div class="about-song" style="text-align:center">Duration: @Model.song.Duration</div>
-        <div class="about-song" style="text-align:center" >Genre: @Model.song.Genre</div>
-        <div class="about-song" style="text-align:center">Release Date: @Model.song.ReleaseDate</div>
+        <div class="about-song" style="text-align:center">Genre: @Model.song.Genre</div>
+        <div class="about-song" style="text-align:center">Release Date: @Model.song.ReleaseDate min</div>
+        <div class="crud-update">
+            <a class="crud-link" href="/Song/Update/@Model.song.SongID">Update</a>
+            <a class="crud-link" href="/song/DeleteConfirm/@Model.song.SongID">Delete</a>
+        </div>
     </div>
     <div class="artists-info">
         <div>Artists in this song:</div>
